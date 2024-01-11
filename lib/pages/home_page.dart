@@ -1,13 +1,15 @@
+import 'package:crud_flutter/services/firestore.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required String title});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final FirestoreService firestoreService = FirestoreService();
   final TextEditingController textController = TextEditingController();
 
   void openNoteBox() {
@@ -19,7 +21,13 @@ class _HomePageState extends State<HomePage> {
               ),
               actions: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    firestoreService.addNote(textController.text);
+
+                    textController.clear();
+
+                    Navigator.pop(context);
+                  },
                   child: const Text('Add'),
                 )
               ],
