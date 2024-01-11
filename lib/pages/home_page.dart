@@ -8,10 +8,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController textController = TextEditingController();
+
   void openNoteBox() {
     showDialog(
         context: context,
-        builder: (context) => const AlertDialog(content: TextField()));
+        builder: (context) => AlertDialog(
+              content: TextField(
+                controller: textController,
+              ),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Add'),
+                )
+              ],
+            ));
   }
 
   @override
