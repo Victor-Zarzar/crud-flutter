@@ -25,12 +25,9 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     if (docID == null) {
                       firestoreService.addNote(textController.text);
-                    }
-                    //
-                    else {
+                    } else {
                       firestoreService.updateNote(docID, textController.text);
                     }
-
                     Navigator.pop(context);
                   },
                   child: const Text('Add'),
